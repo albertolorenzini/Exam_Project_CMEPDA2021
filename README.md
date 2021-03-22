@@ -1,7 +1,7 @@
 # Exam_Project_CMEPDA2021
 ## Performance comparison between three different available neural nets.
 
-This repository tests the performance of three nural nets for object detection, in particular we use:
+This repository tests the performance of three neural nets for object detection, in particular we use:
 
 1. darknet-YOLO from AlexeyAB: https://github.com/AlexeyAB/darknet
 2. CenterNet from xingyizhou: https://github.com/xingyizhou/CenterNet
@@ -64,7 +64,7 @@ Example:
 
 ./CenterNet
   |---.gitignore
-  |---Data
+  |---data
   |   |---coco_cones
   |   |   |---annotations
   |   |   |   |---annotations_test.json
@@ -78,8 +78,70 @@ Example:
 ```
 Your COCO dataset should be ready.
 
-### tfrecord-SSD-Tensorflow
+### kitti/tfrecords-SSD-Tensorflow
 
+For the SSD-Tensorflow dataset setup you have to start from CenterNet dataset and convert it in kitti format. To do that you can use another scripts inside utilities folder named "coco2kitti.py". coco2kitti.py file is suppose to be moved inside the annotations folder of coco dataset. Inside the file you have to choose what kind of .json file you want convert, at line 52 you can shift between train, test, or val. In our case we need only training labels in kitti format, so in this repository coco2kitti.py file is setted up in train mode as default. Once you created the label folder with the txt files inside using `python coco2kitti.py` command, you have to create a kitti dataset folder like below:
+```
+Example:
 
+./kitti_cones
+  |---training
+  |   |---image_2/train_00****.jpg
+  |   |---label_2/train_00****.txt
+  |---testing
+  |   |---image_2/test_00****.jpg
+```
 
+Inside the `kitti_cones/training/image_2/` folder you have to copy all of images from `CenterNet/data/coco_cones/images/train/` folder. In the same way you have to copy all of CenterNet val images, inside `kitti_cones/testing/image_2`, pay attention: I wrote it in the correct way, CenterNet val folder images into kitti testing images and not test to testing folders.
+
+At this point you have to create a file .txt in order to do the last step of cenverting. To do that you can use the "train_imagesets.sh" script inside the scripts folder. Open it with your preferred text editor and edit its first line with your current `kitti_cones` directory path. After that you have to redo the same with "val_imagesets.sh" and "trainval_imagesets.sh" scripts and run them. At this point you should have a `kitti_cones` folder like below:
+
+```
+Example:
+
+./kitti_cones
+  |---training
+  |   |---image_2/train_00****.jpg
+  |   |---label_2/train_00****.txt
+  |---testing
+  |   |---image_2/test_00****.jpg
+  |---ImageSets
+  |   |---train.txt
+  |   |---val.txt
+  |   |---trainval.txt
+```
+
+The last step is convert kitti cones dataset in tfrecord format. In order to do that you need to go with your shell inside utilities folder and run the command below:
+
+```
+python ./tf_convert_data.py \
+  --dataset_name=kitti \
+  --dataset_root=path/to/kitti_cones \
+  --split=train \
+  --output_dir=path/to/kitti_cones/tfrecord \
+```
+
+Remember to create the "tfrecord" folder before you run the command. Than run another time the above command with --split=val and you will have create your dataset for SSD-Tensorflow. To be sure, at this point your `kitti_cones` folder should be like below:
+
+```
+Example:
+
+./kitti_cones
+  |---training
+  |   |---image_2/train_00****.jpg
+  |   |---label_2/train_00****.txt
+  |---testing
+  |   |---image_2/test_00****.jpg
+  |---ImageSets
+  |   |---train.txt
+  |   |---val.txt
+  |   |---trainval.txt
+  |---tfrecord
+  |   |---test_***.tfrecord
+  |   |---train_***.tfrecord
+```
+
+Now your datasets are ready.
+
+## Results
 
