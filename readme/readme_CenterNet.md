@@ -104,4 +104,4 @@ python test.py ctdet \
 For others pre-trained weights you can look for the exp_id inside CenterNet repository.
 
 ## Colab Notebook
-For a easy use, you can run CenterNet with the Colab Notebook present in the "SSD-Tensorflow_utilities" folder. It is prepared with the example dataset, inside it you can find the cells in which you have to change the code, in order to train your own dataset. To run it you need a Google account, than the notebook will save the trained weight in your Google Drive.
+For a easy use, you can run CenterNet with the Colab Notebook present in the "CenterNet_utilities" folder. It is prepared with the example dataset, inside it you can find the cells in which you have to change the code to train your own dataset. To run it you need a Google account, than the notebook will save the trained weight in your Google Drive.
