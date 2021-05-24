@@ -70,9 +70,10 @@ def get_split(split_name, dataset_dir, file_pattern, reader, split_to_sizes,
   decoder = slim.tfexample_decoder.TFExampleDecoder(
     keys_to_features, items_to_handlers)
 
-  labels_to_names = {0: "Pedestrian",
-                     1: "Cyclist",
-                     2: "Car"}
+  labels_to_names = {0: "bigorangecones",
+                     1: "smallorangecones",
+                     2: "bluecones",
+                     3: "yellowcones"}
 
   return slim.dataset.Dataset(
     data_sources=file_pattern,
