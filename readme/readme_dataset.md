@@ -12,7 +12,7 @@ It is important that you follow the next order, otherwise is not possible to con
 
 ### Darknet-YOLO
 
-We start with format for YOLO. In Formula Student, all driverless teams prepare six hundreds laballed images, in order to have all dataset access, which includes thousands of labelled street cones images. Darknet requests a .txt file in which you have to insert all trining images directories, and another one in wich there are all testing images directories. You can find them in DarknetUtilities folder as "train.txt" and "test.txt". All dataset .zip file can be download from this [link](https://drive.google.com/file/d/1owi0N7P71JKmvCkWekrEgjKFi-q5GM9m/view?usp=sharing).
+We start with format for YOLO. In Formula Student, all driverless teams prepare six hundreds laballed images, in order to have all dataset access, which includes thousands of labelled street cones images. Darknet requests a .txt file in which you have to insert all trining images directories, and another one in wich there are all testing images directories. You can find them in darknet_utilities folder as "train.txt" and "test.txt". All dataset .zip file can be download from this [link](https://drive.google.com/file/d/1owi0N7P71JKmvCkWekrEgjKFi-q5GM9m/view?usp=sharing). You can find the instructions to create your bbox files for darknet in this repository (not sure it work correctly): [Yolo_mark](https://github.com/AlexeyAB/Yolo_mark).
 
 ### COCO-CenterNet
 
