@@ -33,12 +33,19 @@ from dataset_utils import int64_feature, float_feature, bytes_feature
 RANDOM_SEED = 4242
 SAMPLES_PER_FILES = 200
 
+
+########################################################
+# Here you have to insert your classes name and number #
+########################################################
+
 CLASSES = {
     'BigOrange': 0,
     'SmallOrange': 1,
     'Blue': 2,
     'Yellow': 3,
 }
+
+########################################################
 
 def _process_image(directory, split, name):
     # Read the image file.
