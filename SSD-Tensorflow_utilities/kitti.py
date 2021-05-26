@@ -28,9 +28,11 @@ ITEMS_TO_DESCRIPTIONS = {
     'object/label': 'A list of labels, one per each object.',
 }
 
+
 SPLITS_TO_SIZES = {
     'train': 2921,
-    'val': 899,
+    'val': 2921,
+    'trainval': 2921
 }
 
 NUM_CLASSES = 4
